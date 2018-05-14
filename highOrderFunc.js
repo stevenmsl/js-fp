@@ -16,3 +16,31 @@ repeat(5, i => {
 });
 console.log(labels);
 
+//functions provide new type of control flow
+function unless(test, then) {
+    if(!test) then();
+}
+repeat (3, n => {
+    unless(n % 2 == 1, () => {
+        console.log(n, "is even");
+    });
+} ) 
+
+//functions create new functions
+function greaterThan(n) {
+    return m => m > n;
+}
+let greaterThan10 = greaterThan(10);
+console.log(greaterThan10(11));
+
+//Functions change other functions
+function noisy(f) {
+    return (...args /*use rest operator: access arguments from the enclosing function */ ) => {
+        console.log("calling with", args);
+        let result = f(...args);
+        console.log("called with", args, ", returned", result);
+        return result;        
+    }
+}
+noisy(Math.min)(3,2,1);
+
