@@ -3,10 +3,37 @@
 //install lodash 
 //npm i --save lodash
 
+//assign - assigns properties of one or many objects to a source object
 var _ = require('lodash')
-var foo = { a: "a property" };
-var bar = { b: 4, c: "an other property" }
+var title = { title: "Lodash Examples" };
+var body = { content : "10 lodash functions you should know" }
 
-var result = _.assign({ a: "an old property" }, foo, bar);
+var result = _.assign(title, body);
 // result => { a: 'a property', b: 4, c: 'an other property' }
 console.log(result);
+
+//times - receives as arguments the number of iterations and a function to execute n times and returns an array of the results
+var _ = require('lodash')
+function getRandomInt() {
+    return Math.round(Math.random() * 100);    
+}
+var result = _.times(5, getRandomInt);
+console.log(result);
+
+//debounce - will invoke a function after a certain amount of time since the last time it was invoked. 
+var _ = require('lodash')
+function validateRequired(value) {
+    if (value) console.log("Valid");
+    else console.log("Invalid");
+}
+var check =
+    _.debounce(validateRequired, 1000);
+//Even though ‘check’ will be called 5 times ‘validateRequired will only be called once after 1 second. 
+//This can be used when you don’t want to show the error message instantly.
+check(null);
+check('test');
+check(null);
+check(null);
+check('test 2');
+
+
