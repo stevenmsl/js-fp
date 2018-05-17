@@ -75,3 +75,28 @@ var posts = [
 posts = _.keyBy(posts, "id");
 console.log(posts);
 console.log(posts["1abc"]);
+
+//reduce - reduces collection to a value which is the accumulated result of running each element in collection thru iteratee, 
+//where each successive invocation is supplied the return value of the previous.
+//So, in this case we reduce the users array into an object. This object will have two properties: 28 and 30. 
+//Each property is an array used to collect users of a specific age.
+var _ = require('lodash');
+var users = [
+    { name: "John", age: 30 },
+    { name: "Jane", age: 28 },
+    { name: "Bill", age: 65 },
+    { name: "Emily", age: 17 },
+    { name: "Jack", age: 30 }
+];
+
+var reducedUsers = _.reduce(users, function (result, user) {
+    if (user.age >= 18 && user.age <= 59) {
+        //Use user’s age to create a new property and initialize it to an array.    
+        (result[user.age] || (result[user.age] = [] )).push(user);        
+    }
+    return result; //make sure the result is supplied to the successive invocation
+},{} //specify a default value  
+);
+console.log(reducedUsers);
+
+
