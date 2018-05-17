@@ -109,9 +109,12 @@ copy.foo = "new value";
 console.log(original);
 console.log(copy);
 
-
-
-
+//sortedUniq - Creates a duplicate-free version of an array, using SameValueZero for equality comparisons, 
+//in which only the first occurrence of each element is kept. It is designed and optimized for sorted arrays.
+var _ = require('lodash');
+var sortedArray = [1, 1, 2, 3, 3, 3, 5, 8, 8];
+var result = _.sortedUniq(sortedArray);
+console.log(result);
 
 
 
