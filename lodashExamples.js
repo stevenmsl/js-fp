@@ -99,4 +99,20 @@ var reducedUsers = _.reduce(users, function (result, user) {
 );
 console.log(reducedUsers);
 
+//cloneDeep - recursively clones value. 
+//As a result, a new object with a new address in memory will be created. 
+//Any changes made to the new object will not affect the original object.
+var _ = require('lodash');
+var original = { foo: "bar"};
+var copy = _.cloneDeep(original);
+copy.foo = "new value";
+console.log(original);
+console.log(copy);
+
+
+
+
+
+
+
 
